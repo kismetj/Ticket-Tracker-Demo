@@ -29,8 +29,8 @@ function fetchIssues() {
     }
 }
 
-function saveIssue(e){
-    let issueID = chance.guid()
+function saveIssue(e) {
+    let issueId = chance.guid()
     let issueSubject = document.getElementById('issueSubjInput').value
     let issueDesc = document.getElementById('issueDescInput').value
     let issueSeverity = document.getElementById('issueSeverityInput').value
@@ -38,15 +38,13 @@ function saveIssue(e){
     let issueStatus = 'Open'
 
     let issue = {
-        id: issueId, 
+        id: issueId,
         subject: issueSubject,
         description: issueDesc,
-        severity: issueSeverity, 
-        assignedTo: issueAssignedTo, 
+        severity: issueSeverity,
+        assignedTo: issueAssignedTo,
         status: issueStatus
     }
-
-console.log(saveIssue)
 
     if(localStorage.getItem('issues')===null) {
         let issues = []
@@ -59,7 +57,7 @@ console.log(saveIssue)
     }
 
     document.getElementById('issueInputForm').reset();
-    
+
     fetchIssues()
 
     e.preventDefault()
@@ -75,7 +73,7 @@ function setStatusClosed(id) {
 
     localStorage.setItem('issues', JSON.stringify(issues))
 
-    fetchIssues ()
+    fetchIssues()
 }
 
 function deleteIssue (id) {
@@ -89,4 +87,5 @@ function deleteIssue (id) {
     localStorage.setItem('issues', JSON.stringify(issues))
 
     fetchIssues()
+
 }
